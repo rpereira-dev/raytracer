@@ -6,18 +6,20 @@
 
 # define DEFAULT_SCENE_NAME ("defaultName")
 
-typedef struct	s_scene {
-	char 			*name;
-	char 			*rawpixels;
-	t_array_list	lights;
-	t_array_list	objects;
-}				t_scene;
-
-/** a scene object: light, camera, primitives... */ 
+/** a generic scene object. */ 
 typedef struct	s_object {
-	
+	t_vec3 origin;
+	t_vec3 color;
 }				t_object;
 
+typedef struct	s_scene {
+	char 			*name; //scene name
+	t_vec3			origin; //scene origin (to draw a scene into another)
+	t_array_list	lights; //light of this scene
+	t_array_list	objects; //objects of this scene (sphere, planes...)
+	t_array_list 	scenes; //others scenes holds by this scene
+	char 			*rawpixels;
+}				t_scene;
 
 /** parse the given scene file and store the data to the scene address */
 int parseSceneFile(t_scene *scene, char *filepath);

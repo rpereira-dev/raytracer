@@ -1,0 +1,45 @@
+# sample scene to explain syntax
+# comments can be written using char '#'
+
+# we here create a scene called "Hello Ball", which contains a perspect camera, a white ponctual light, and a red sphere
+
+scene {
+
+	name: "Hello Ball",
+
+	camera {
+		type: "perspective",
+		fov: 70,
+		near: 0.001,
+		far: 1000
+	},
+
+	light {
+		type: "ponctual",
+		intensity: 1.0,
+		color {
+			r: 1.0,
+			g: 1.0,
+			b: 1.0
+		},
+		position: {
+			x: 0,
+			y: 50,
+			z: 0
+		}
+	},
+
+	sphere {
+		color {
+			r: 1.0,
+			g: 0.0,
+			b: 0.0
+		},
+		position {
+			x: 0,
+			y: 50,
+			z: 0
+		},
+		size: 10
+	}
+}

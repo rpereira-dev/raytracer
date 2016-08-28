@@ -1,3 +1,6 @@
 [submodule "C_data_structures"]
 	path = C_data_structures
 	url = https://github.com/rpereira-dev/C_data_structures.git
+[submodule "C_maths"]
+	path = C_maths
+	url = https://github.com/rpereira-dev/C_maths.git

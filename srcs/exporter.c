@@ -83,5 +83,5 @@ int exportScene(t_scene *scene, char *filepath) {
 
 	//export as bmp
 	printf("Exporting to : %s\n", buffer);
-	return (exportBMP(scene->rawpixels, 1, 1, buffer));
+	return (exportBMP(scene->rawpixels, scene->width, scene->height, buffer));
 }

@@ -2,15 +2,19 @@
 # define RAYTRACER_H
 
 # include "array_list.h"
+# include "vec2.h"
+# include "vec3.h"
+# include "vec4.h"
+# include "mat4.h"
 # include <string.h>
-
-# define DEFAULT_SCENE_NAME ("defaultName")
+# include <fcntl.h>
+# include <unistd.h>
 
 /** a generic scene object. */ 
-typedef struct	s_object {
+typedef struct	s_scene_object {
 	t_vec3 origin;
 	t_vec3 color;
-}				t_object;
+}				t_scene_object;
 
 typedef struct	s_scene {
 	char 			*name; //scene name
@@ -22,12 +26,12 @@ typedef struct	s_scene {
 }				t_scene;
 
 /** parse the given scene file and store the data to the scene address */
-int parseSceneFile(t_scene *scene, char *filepath);
+int loadSceneFile(t_scene * scene, char * filepath);
 
 /** render the scene */
-int renderScene(t_scene *scene);
+int renderScene(t_scene * scene);
 
 /** export the scene to the given path */
-int exportScene(t_scene *scene, char *filepath);
+int exportScene(t_scene * scene, char * filepath);
 
 #endif

@@ -3,8 +3,8 @@
 
 # we here create a scene called "Hello Ball", which contains a perspect camera, a white ponctual light, and a red sphere
 
-scene {
-
+scene 
+{
 	name: "Hello Ball",
 
 	camera {
@@ -22,14 +22,15 @@ scene {
 			g: 1.0,
 			b: 1.0
 		},
-		position: {
+		position {
 			x: 0,
 			y: 50,
 			z: 0
 		}
 	},
 
-	sphere {
+	object {
+		type: "sphere",
 		color {
 			r: 1.0,
 			g: 0.0,

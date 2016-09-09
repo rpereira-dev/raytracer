@@ -11,12 +11,6 @@ int main(int argc, char **argv) {
 
 	//for each files, parse it, render it to a texture, export the texture as bmp
 
-	//export file buffers
-	char filepath[128];
-	char *fileformat = ".rt";
-	int fileformatlen = strlen(fileformat);
-	int end = sizeof(filepath) - 1 - fileformatlen;
-
 	//scene buffer
 	t_scene scene;
 
@@ -25,8 +19,8 @@ int main(int argc, char **argv) {
 	
 	for (i = 1; i < argc; i++) {
 
-		//try parse
-		if (parseSceneFile(&scene, argv[i]) < 0) {
+		//try loading
+		if (loadSceneFile(&scene, argv[i]) < 0) {
 			printf("Parsing scene %s failed.\n", argv[i]);
 			continue ;
 		}
@@ -36,19 +30,15 @@ int main(int argc, char **argv) {
 			printf("Rendering scene %s failed.\n", argv[i]);
 			continue ;
 		}
-
-		//generate export file's name
-		strncpy(filepath, argv[i], end);
-		strcat(filepath + end, fileformat);
-
+		
 		//export scene to filepath
-		if (exportScene(&scene, filepath) < 0) {
+		if (exportScene(&scene, argv[i]) < 0) {
 			printf("Export scene %s failed.\n", argv[i]);
 			continue ;
 		}
 
 		//everything went ok
-		printf("Scene parsed, rendered and exported at %s\n", filepath);
+		printf("Scene parsed, rendered and exported at %s\n", argv[i]);
 	}
 	return (0);
 }

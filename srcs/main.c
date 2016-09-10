@@ -19,26 +19,36 @@ int main(int argc, char **argv) {
 	
 	for (i = 1; i < argc; i++) {
 
+		printf("-----------------------------------------------\n");
+		printf("Loading scene %s ...\n", argv[i]);
+
 		//try loading
 		if (loadSceneFile(&scene, argv[i]) < 0) {
 			printf("Parsing scene %s failed.\n", argv[i]);
 			continue ;
 		}
 
+		printf("Loaded\n");
+
+		printf("Rendering scene %s ... \n", argv[i]);
+
 		//try render
 		if (renderScene(&scene) < 0) {
 			printf("Rendering scene %s failed.\n", argv[i]);
 			continue ;
 		}
-		
+
+		printf("Rendered\n");
+
+		printf("Exporting scene %s ...\n", argv[i]);
+
 		//export scene to filepath
 		if (exportScene(&scene, argv[i]) < 0) {
 			printf("Export scene %s failed.\n", argv[i]);
 			continue ;
 		}
 
-		//everything went ok
-		printf("Scene parsed, rendered and exported at %s\n", argv[i]);
+		printf("Exported\n");
 	}
 	return (0);
 }

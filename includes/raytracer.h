@@ -10,15 +10,27 @@
 # include <fcntl.h>
 # include <unistd.h>
 
+enum e_scene_objectID {
+	SCENE_OBJECT_SPHERE,
+	SCENE_OBJECT_PLANE,
+	SCENE_OBJECT_TRIANGLE
+};
+
+# define SCENE_OBJECT_ATTRIBUTES int typeID; t_vec3 pos; t_vec3 color; t_mat4 mtransf;
+
 /** a generic scene object. */ 
 typedef struct	s_scene_object {
-	t_vec3 pos;
-	t_vec3 color;
+	SCENE_OBJECT_ATTRIBUTES;
 }				t_scene_object;
 
+typedef struct	s_sphere {
+	SCENE_OBJECT_ATTRIBUTES;
+	float	radius;
+}				t_sphere;
+
 typedef struct	s_light {
-	t_vec3 pos;
-	t_vec3 color;
+	t_vec3	pos;
+	t_vec3	color;
 }				t_light;
 
 typedef struct	s_camera {
@@ -26,6 +38,9 @@ typedef struct	s_camera {
 	float	fov;
 	float 	near;
 	float	far;
+	t_mat4	mview;
+	t_mat4	mproj;
+	t_mat4	mviewproj;
 }				t_camera;
 
 typedef struct	s_scene {
